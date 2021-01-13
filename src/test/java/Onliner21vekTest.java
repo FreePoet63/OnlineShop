@@ -129,8 +129,8 @@ public class Onliner21vekTest {
         JavascriptExecutor jsi = (JavascriptExecutor) driver;
         jsi.executeScript("window.scrollBy(0, 500)", "");
         onPage(VekCollection.class).itemEnam().get(0).click();
-        onPage(VekCollection.class).itemTele().get(4).click();
-        onPage(VekCollection.class).itemTele().get(7).click();
+        onPage(VekPage.class).elementDia("LG").click();
+        onPage(VekPage.class).elementDia("Samsung").click();
         JavascriptExecutor jsix = (JavascriptExecutor) driver;
         jsix.executeScript("window.scrollBy(0, 300)", "");
         onPage(VekPage.class).itemName("Диагональ").click();
@@ -155,7 +155,8 @@ public class Onliner21vekTest {
             textResult.add(e.getText());
         assertThat(textResult, hasItems(containsString("Телевизор Samsung"),containsString(
                 "Телевизор LG")));
-        onPage(VekCollection.class).button().get(3).click();
+        onPage(VekPage.class).itemName("Телевизор LG").click();
+        onPage(VekCollection.class).button().get(0).click();
         onPage(VekPage.class).itemName("Корзина").click();
         List<WebElement> product = onPage(VekCollection.class).basketProd();
         product.size();
